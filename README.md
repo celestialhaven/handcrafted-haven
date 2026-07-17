@@ -1,105 +1,99 @@
-# Handcrafted Haven
+# WDD 430 – Week 2 Group Project Report
 
-Handcrafted Haven is a full-stack marketplace web application designed to help artisans showcase and sell unique handcrafted products. The platform connects creators with customers who appreciate handmade, locally produced, and sustainable items.
+## Handcrafted Haven
 
-## Project Purpose
+**Student Name:** Jones G. Mabala
+**Group Number:** Team 3
+**Meeting Date:** Wednesdays 
+**Meeting Time:** 17 00 (UTC-0)
+**Meeting Platform or Location:** MS TEAMS
 
-The purpose of Handcrafted Haven is to provide artisans with an accessible online platform where they can:
+## 1. Meeting Participants
 
-* Create and manage seller profiles.
-* Share information about their craft and background.
-* Create product listings with descriptions, prices, categories, and images.
-* Present their handcrafted products to a larger audience.
+The following group members participated in the meeting:
 
-Customers will be able to:
+* Jones G. Mabala
+* Armando Martin Fernandez Jara
 
-* Browse available handcrafted products.
-* Filter products by category and price.
-* View detailed product and seller information.
-* Submit product ratings and written reviews.
 
-## Core Features
+## 2. Meeting Summary
 
-### Seller Profiles
+During our group meeting, we reviewed the requirements and scope of the Handcrafted Haven project. We discussed the main purpose of the application, which is to provide an online marketplace where artisans can create seller profiles, showcase handcrafted products, and connect with interested customers.
 
-Authenticated sellers will have dedicated profile pages containing:
+We identified the main required features, including seller profiles, product listings, product browsing, category and price filtering, ratings, and written product reviews.
 
-* Seller name
-* Profile image
-* Biography or craft story
-* Location
-* Contact or social information
-* Collection of listed products
+The group also discussed the development technologies that will be used. The application will be developed using Next.js and TypeScript. GitHub will be used for source-code management, while GitHub Projects will be used to organize user stories, assignments, and development progress. The completed application will be deployed using Vercel.
 
-### Product Listings
+We created a public GitHub repository and associated GitHub Project board. Group members were invited as collaborators, and each member was instructed to clone the repository to their local computer.
 
-Sellers will be able to create product listings containing:
+The group also began planning the visual design of the application. We selected a warm and natural visual theme that represents handmade products and craftsmanship. The design uses forest green, terracotta, cream, gold, and charcoal colors. Playfair Display was selected for headings, while Inter was selected for normal body text.
 
-* Product name
-* Product description
-* Product image
-* Category
-* Price
-* Seller information
-* Availability status
+Finally, we brainstormed the initial user stories and work items that will guide the development of the project. Responsibilities will be assigned through the GitHub Project board, and each major feature will be developed on a separate Git branch before being reviewed and merged.
 
-### Product Catalog
+## 3. Project Purpose
 
-Visitors will be able to:
+Handcrafted Haven is a web marketplace for unique handmade products. It will allow artisans to share their stories, create seller profiles, and publish their products online.
 
-* Browse all available products.
-* Search for products.
-* Filter products by category.
-* Filter products by price range.
-* Open individual product-detail pages.
+Customers will be able to browse the catalog, filter products, view seller information, and leave ratings and written reviews.
 
-### Reviews and Ratings
+## 4. Project Requirements
 
-Users will be able to:
+The application should include:
 
-* Give products a numerical rating.
-* Write product reviews.
-* View previous ratings and reviews.
-* See the average rating for each product.
+* Authenticated seller accounts
+* Seller-profile pages
+* Product listings
+* Product names, descriptions, prices, categories, and images
+* A browsable product catalog
+* Product category filters
+* Product price filters
+* Individual product-detail pages
+* Product ratings
+* Written product reviews
+* Responsive navigation and layouts
+* Accessible and readable content
+* Consistent branding
+* SEO-friendly pages
+* Database integration
+* Deployment to Vercel
 
-## Technology Stack
+## 5. Project Limitations
 
-### Front End
+The group has a limited development period, so the first version will focus on the required marketplace features.
 
-* Next.js
-* React
-* TypeScript
-* HTML
-* CSS
-* Responsive design
+The following features may be treated as optional unless the instructor confirms that they are required:
 
-### Back End
+* Online payment processing
+* Shopping-cart functionality
+* Order tracking
+* Shipping calculations
+* Real-time messaging
+* Advanced seller analytics
+* Wishlist functionality
 
-* Node.js
-* Next.js server actions or API routes
-* Database: [Insert selected database]
-* Authentication: [Insert selected authentication service]
+The group will prioritize a complete and functional application over adding too many unfinished features.
 
-### Development and Deployment
+## 6. Repository and Project Board
 
-* Git
-* GitHub
-* GitHub Projects
-* Vercel
+**GitHub Repository URL:**
+https://github.com/celestialhaven/handcrafted-haven.git
 
-## Design Goals
+**GitHub Project Board URL:**
+https://github.com/users/celestialhaven/projects/2
 
-The website will follow these design principles:
+## 7. Evidence of Local Repository Clone
 
-* Responsive on desktop, tablet, and mobile devices
-* Accessible to users with disabilities
-* Clear and consistent navigation
-* Readable typography
-* Consistent branding and color usage
-* Optimized images and page performance
-* Search-engine-friendly page content and metadata
+I might be working alone, but there is one that would like to join I have added him as collaborator
 
-## Proposed Design System
+**Screenshot:**
+
+![Collaborator](image.png)
+
+## 8. Design Theme
+
+### Design Concept
+
+The visual theme is inspired by natural materials and handcrafted products such as woodwork, pottery, textiles, jewelry, and woven goods. The design will use warm colors, clear typography, product-focused images, and generous spacing.
 
 ### Color Palette
 
@@ -112,199 +106,151 @@ The website will follow these design principles:
 
 ### Typography
 
-* Headings: Playfair Display
-* Body text: Inter
-* Alternative system fonts: Arial, Helvetica, sans-serif
+* Heading font: Playfair Display
+* Body font: Inter
+* Backup font: Arial or sans-serif
 
-### Visual Style
+### General Layout
 
-Handcrafted Haven will use warm, natural colors inspired by wood, fabric, pottery, and other handcrafted materials. Product photography will be emphasized through clean cards, generous spacing, rounded corners, and subtle shadows.
+The proposed application layout includes:
 
-## Proposed Pages
+* Header with logo, navigation, search, and account access
+* Hero section promoting unique handcrafted products
+* Featured-product section
+* Product categories
+* Artisan or seller highlights
+* Product cards in a responsive grid
+* Footer containing project information and navigation links
 
-1. Home page
-2. Product catalog
-3. Product details
-4. Seller directory
-5. Seller profile
-6. Create product listing
-7. Edit product listing
-8. Sign-in page
-9. Registration page
-10. About page
-11. Contact page
-12. Error and not-found pages
+### Component Style
 
-## Suggested Data Models
+Components will use:
 
-### User
+* Rounded product cards
+* Clear buttons
+* Visible focus indicators
+* Consistent spacing
+* Responsive image sizes
+* Proper heading hierarchy
+* Accessible form labels
+* Subtle shadows and hover effects
 
-* `id`
-* `name`
-* `email`
-* `passwordHash` or authentication-provider ID
-* `role`
-* `image`
-* `createdAt`
-* `updatedAt`
+**Design Evidence:**
 
-### Seller Profile
+[Insert screenshot of the color palette, wireframe, Figma design, Canva design, or hand-drawn layout here]
 
-* `id`
-* `userId`
-* `businessName`
-* `biography`
-* `location`
-* `profileImage`
-* `socialLinks`
-* `createdAt`
-* `updatedAt`
+## 9. Initial User Stories and Work Items
 
-### Product
+### 1. Create the Next.js Project
 
-* `id`
-* `sellerId`
-* `name`
-* `description`
-* `price`
-* `category`
-* `imageUrl`
-* `availability`
-* `createdAt`
-* `updatedAt`
+**User story:** As a developer, I need a properly configured Next.js application so the group can begin developing the website.
 
-### Review
+**Description:** Initialize the project using Next.js, TypeScript, ESLint, and a `src` directory. Add the project to the group repository and confirm that all members can run it locally.
 
-* `id`
-* `productId`
-* `userName` or `userId`
-* `rating`
-* `comment`
-* `createdAt`
+### 2. Build the Main Navigation
 
-### Category
+**User story:** As a visitor, I want clear navigation so I can easily move between the main sections of the website.
 
-* `id`
-* `name`
-* `slug`
-* `description`
+**Description:** Create a responsive header containing the logo, home link, products link, sellers link, about link, and account access.
 
-## Getting Started
+### 3. Build the Home Page
 
-Clone the repository:
+**User story:** As a visitor, I want to understand the purpose of Handcrafted Haven when I open the website.
 
-```bash
-git clone [repository-url]
-```
+**Description:** Create a home page containing a hero section, featured products, popular categories, featured artisans, and calls to action.
 
-Move into the project directory:
+### 4. Create a Reusable Product Card
 
-```bash
-cd handcrafted-haven
-```
+**User story:** As a visitor, I want product information presented consistently so I can easily compare products.
 
-Install the dependencies:
+**Description:** Create a reusable card component containing the product image, product name, seller name, price, category, and rating.
 
-```bash
-npm install
-```
+### 5. Build the Product Catalog
 
-Create an environment file:
+**User story:** As a customer, I want to browse all available products so I can discover handcrafted items.
 
-```bash
-cp .env.example .env.local
-```
+**Description:** Create a responsive product catalog that obtains product information from the application database.
 
-Start the development server:
+### 6. Add Product Filtering
 
-```bash
-npm run dev
-```
+**User story:** As a customer, I want to filter products by category and price so I can find products that match my interests and budget.
 
-Open the application at:
+**Description:** Add category and price-range filtering to the product catalog. Display a useful message when no products match the selected filters.
 
-```text
-http://localhost:3000
-```
+### 7. Build the Product-Detail Page
 
-## Environment Variables
+**User story:** As a customer, I want to view complete product information before deciding whether I am interested in an item.
 
-The following variables may be required:
+**Description:** Create a dynamic product page containing the product image, name, description, price, category, seller information, rating, and reviews.
 
-```env
-DATABASE_URL=
-AUTH_SECRET=
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
+### 8. Build Seller Profiles
 
-Do not commit `.env.local` or private credentials to GitHub.
+**User story:** As an artisan, I want a seller profile so customers can learn about me and view my products.
 
-## Development Workflow
+**Description:** Create seller-profile pages containing the seller name, photograph, biography, location, and collection of products.
 
-Before working on a new task:
+### 9. Create Product Listings
 
-```bash
-git checkout main
-git pull origin main
-```
+**User story:** As an authenticated seller, I want to create product listings so I can showcase my handcrafted products.
 
-Create a new feature branch:
+**Description:** Create a protected form that allows sellers to enter a product name, description, price, category, image, and availability status.
 
-```bash
-git checkout -b feature/product-catalog
-```
+### 10. Edit and Delete Product Listings
 
-After completing your changes:
+**User story:** As a seller, I want to manage my existing product listings so that the information remains accurate.
 
-```bash
-git add .
-git commit -m "Add product catalog page"
-git push origin feature/product-catalog
-```
+**Description:** Allow authenticated sellers to edit or remove only the products associated with their own account.
 
-Create a pull request on GitHub. Another group member should review the changes before merging them into the `main` branch.
+### 11. Add Ratings and Reviews
 
-## Branch Naming
+**User story:** As a user, I want to rate and review products so I can share my experience with other customers.
 
-Use descriptive branch names:
+**Description:** Create a review form with a numerical rating and written comment. Display existing reviews and calculate the average product rating.
 
-```text
-feature/home-page
-feature/product-filter
-feature/seller-profile
-fix/mobile-navigation
-docs/update-readme
-```
+### 12. Create the Database
 
-## Commit Message Examples
+**User story:** As a development team, we need persistent data storage so product, seller, and review information is not lost.
 
-```text
-Add responsive product card component
-Create seller profile data model
-Fix mobile navigation alignment
-Update project documentation
-```
+**Description:** Configure the selected database and create data models for users, seller profiles, products, categories, and reviews.
 
-## Group Members
+### 13. Add Authentication
 
-* Jones G. Mabala [jonzmabz04@gmail.com or celestialhaven]
-* [Member 2]
-* [Member 3]
-* [Member 4]
+**User story:** As a seller, I want to securely sign in so I can manage my profile and products.
 
-## Project Links
+**Description:** Implement authentication and protect seller-only pages and actions from unauthorized access.
 
-* GitHub Repository: https://github.com/celestialhaven/handcrafted-haven.git
-* GitHub Project Board: https://github.com/users/celestialhaven/projects/2
-* Deployed Application: [Vercel]
-* Demonstration Video: [Insert URL]
+### 14. Perform Responsive and Accessibility Testing
 
-## Current Project Scope
+**User story:** As a user, I want the application to work on different devices and with assistive technology.
 
-The initial project will focus on seller profiles, product listings, product discovery, filtering, ratings, and reviews.
+**Description:** Test the application on desktop, tablet, and mobile screens. Check keyboard navigation, text contrast, image alternative text, form labels, and heading order.
 
-Online payment processing and complete order management will only be implemented if they are confirmed as required and the group has sufficient development time.
+### 15. Deploy the Application
 
-## License
+**User story:** As an evaluator, I want access to a deployed application so I can review and test the completed project.
 
-This project was developed for the WDD 430 Web Full-Stack Development course at Brigham Young University–Idaho.
+**Description:** Connect the GitHub repository to Vercel, configure the required environment variables, and verify that the production application works correctly.
+
+## 10. Initial Responsibility Assignments
+
+| Work Item                | Assigned Member | Status      |
+| ------------------------ | --------------- | ----------- |
+| Next.js project setup    | [Name]          | To Do       |
+| README and documentation | Jones G. Mabala | Complete    |
+| Design system            | [Name]          | To Do       |
+| Navigation component     | [Name]          | To Do       |
+| Home page                | [Name]          | To Do       |
+| Product card             | [Name]          | To Do       |
+| Database research        | [Name]          | To Do       |
+| Authentication research  | [Name]          | To Do       |
+
+## 11. Next Steps
+
+Before the next meeting, the group will:
+
+1. Complete the initial Next.js project setup.
+2. Finalize the design theme.
+3. Add the user stories to the GitHub Project board.
+4. Assign initial development tasks.
+5. Begin building the landing page and reusable components.
+6. Report progress and unresolved issues in the next group meeting.
