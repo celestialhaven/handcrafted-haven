@@ -87,7 +87,7 @@ I might be working alone, but there is one that would like to join I have added 
 
 **Screenshot:**
 
-![Collaborator](image.png)
+public\image.png
 
 ## 8. Design Theme
 
