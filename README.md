@@ -14,6 +14,8 @@ The following group members participated in the meeting:
 
 * Jones G. Mabala
 * Armando Martin Fernandez Jara
+* Eluwa V. Monday (I didn't attend the first call with this group, adding this line 
+for init commit on this branch).
 
 
 ## 2. Meeting Summary
