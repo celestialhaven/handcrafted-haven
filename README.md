@@ -14,7 +14,6 @@ The following group members participated in the meeting:
 
 * Jones G. Mabala
 * Armando Martin Fernandez Jara
-* Monday Victor Eluwa
 
 
 ## 2. Meeting Summary
