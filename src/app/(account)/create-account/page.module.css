@@ -1,0 +1,253 @@
+.authCard {
+  position: relative;
+  width: min(100%, 680px);
+  padding: 42px clamp(34px, 7vw, 78px) 48px;
+  border: 1px solid #b8b8b3;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.brand {
+  position: absolute;
+  top: 28px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #20211e;
+  font-size: 13px;
+  line-height: 1.08;
+}
+
+.brandMark {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #656661;
+  background:
+    linear-gradient(45deg, transparent 49%, #999a95 49.5%, #999a95 50.5%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, #999a95 49.5%, #999a95 50.5%, transparent 51%);
+}
+
+.register {
+  padding-top: 40px;
+}
+
+.register header {
+  margin-bottom: 38px;
+  text-align: center;
+}
+
+.register h1 {
+  margin-bottom: 26px;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.register h2 {
+  margin-bottom: 6px;
+  font-size: 24px;
+}
+
+.register header p {
+  color: #5a5b56;
+  font-size: 18px;
+}
+
+.register form {
+  display: grid;
+  gap: 25px;
+}
+
+.field {
+  display: grid;
+  gap: 10px;
+}
+
+.field label {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.field > input,
+.passwordField {
+  height: 58px;
+  border: 1px solid #a7a8a3;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.field input {
+  width: 100%;
+  padding: 0 18px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #20211e;
+  font: inherit;
+  font-size: 16px;
+}
+
+.field > input {
+  border: 1px solid #a7a8a3;
+}
+
+.field > input:focus,
+.passwordField:focus-within {
+  border-color: #8a5d3b;
+  box-shadow: 0 0 0 3px rgba(138, 93, 59, 0.13);
+}
+
+.passwordField {
+  display: flex;
+  align-items: center;
+}
+
+.passwordField button {
+  width: 52px;
+  height: 100%;
+  flex: 0 0 auto;
+  border: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: #777872;
+  cursor: pointer;
+}
+
+.passwordField svg {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
+.submitButton {
+  min-height: 58px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 6px;
+  background: #3a3a38;
+  color: #fff;
+  font: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background: #8a5d3b;
+}
+
+.divider {
+  margin: 36px 0 30px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  color: #52534e;
+}
+
+.divider span {
+  height: 1px;
+  background: #d0d0cc;
+}
+
+.divider p {
+  font-size: 17px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+
+.socials button {
+  width: 78px;
+  height: 60px;
+  border: 1px solid #aaa9a4;
+  border-radius: 6px;
+  background: #fff;
+  color: #161713;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.socials button:nth-child(2) {
+  font-family: Georgia, serif;
+}
+
+.socials button:nth-child(3) {
+  font-size: 29px;
+}
+
+.socials button:hover {
+  border-color: #8a5d3b;
+  color: #8a5d3b;
+}
+
+.signInPrompt {
+  margin-top: 62px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.signInPrompt a {
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .authCard {
+    padding: 28px 22px 34px;
+  }
+
+  .brand {
+    position: static;
+  }
+
+  .register {
+    padding-top: 34px;
+  }
+
+  .register header {
+    margin-bottom: 30px;
+  }
+
+  .register h1 {
+    margin-bottom: 22px;
+    font-size: 34px;
+  }
+
+  .register h2 {
+    font-size: 21px;
+  }
+
+  .register header p {
+    font-size: 16px;
+  }
+
+  .divider {
+    gap: 14px;
+  }
+
+  .divider p {
+    font-size: 15px;
+  }
+
+  .socials {
+    gap: 18px;
+  }
+
+  .socials button {
+    width: 68px;
+    height: 56px;
+  }
+
+  .signInPrompt {
+    margin-top: 48px;
+    font-size: 16px;
+  }
+}

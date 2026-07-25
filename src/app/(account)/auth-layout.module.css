@@ -1,0 +1,14 @@
+.authLayout {
+  min-height: 100vh;
+  padding: 48px 24px;
+  display: grid;
+  place-items: center;
+  background: #fafaf8;
+}
+
+@media (max-width: 600px) {
+  .authLayout {
+    padding: 24px 16px;
+    align-items: start;
+  }
+}

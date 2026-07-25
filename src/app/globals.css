@@ -7,6 +7,7 @@
 
 html {
   height: 100%;
+  scrollbar-gutter: stable;
 }
 
 html,
@@ -34,12 +35,29 @@ body {
 }
 
 body:has([data-dashboard-layout]) > header,
-body:has([data-dashboard-layout]) > footer {
+body:has([data-dashboard-layout]) > footer,
+body:has([data-auth-layout]) > header,
+body:has([data-auth-layout]) > footer {
   display: none;
 }
 
-body:has([data-dashboard-layout]) > .site-content {
+body:has([data-dashboard-layout]) > .site-content,
+body:has([data-auth-layout]) > .site-content {
   display: block;
+}
+
+body:has([data-create-product]) > header {
+  display: block;
+}
+
+body:has([data-create-product]) [data-dashboard-layout] {
+  min-height: 0;
+  display: block;
+}
+
+body:has([data-create-product]) [data-dashboard-layout] > header,
+body:has([data-create-product]) [data-dashboard-layout] > aside {
+  display: none;
 }
 
 * {

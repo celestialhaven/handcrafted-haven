@@ -1,0 +1,117 @@
+.aboutPage {
+  width: min(100% - 48px, 1200px);
+  margin: 0 auto;
+  padding: 24px 0 18px;
+}
+
+.story,
+.mission {
+  display: grid;
+  align-items: center;
+}
+
+.story {
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: clamp(38px, 6vw, 78px);
+  padding: 0 16px 24px;
+}
+
+.mission {
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(58px, 11vw, 150px);
+  padding: 22px 16px 14px;
+  border-top: 1px solid #cecec9;
+}
+
+.imagePlaceholder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.35 / 1;
+  overflow: hidden;
+  border: 1px solid #989994;
+  background:
+    linear-gradient(23deg, transparent 49.7%, #aaa9a4 49.9%, #aaa9a4 50.1%, transparent 50.3%),
+    linear-gradient(-23deg, transparent 49.7%, #aaa9a4 49.9%, #aaa9a4 50.1%, transparent 50.3%),
+    #f8f8f6;
+}
+
+.imagePlaceholder span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.story h1,
+.mission h2 {
+  margin-bottom: 10px;
+  font-size: 27px;
+}
+
+.story p,
+.mission p {
+  max-width: 470px;
+  color: #3f403b;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.values {
+  padding: 15px 5% 0;
+  border-top: 1px solid #cecec9;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.values article {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  text-align: center;
+}
+
+.values span {
+  min-height: 44px;
+  font-family: Georgia, serif;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.values h3 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 850px) {
+  .aboutPage {
+    width: min(100% - 32px, 1200px);
+    padding-top: 16px;
+  }
+
+  .story,
+  .mission {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding-inline: 0;
+  }
+
+  .story > div:last-child {
+    padding: 0 4px;
+  }
+
+  .mission {
+    padding-top: 30px;
+  }
+
+  .mission .imagePlaceholder {
+    order: -1;
+  }
+
+  .values {
+    margin-top: 24px;
+    padding: 22px 0 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
+  }
+}

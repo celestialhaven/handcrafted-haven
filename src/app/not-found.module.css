@@ -1,0 +1,133 @@
+.notFound {
+  width: min(100% - 48px, 1200px);
+  min-height: calc(100vh - 153px);
+  margin: 0 auto;
+  padding: clamp(64px, 9vh, 110px) clamp(20px, 4vw, 60px);
+  display: grid;
+  grid-template-columns: minmax(340px, 0.85fr) minmax(420px, 1.15fr);
+  align-items: center;
+  gap: clamp(60px, 10vw, 150px);
+}
+
+.content {
+  text-align: center;
+}
+
+.code {
+  margin-bottom: 24px;
+  font-size: clamp(88px, 10vw, 136px);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -5px;
+}
+
+.content h1 {
+  margin-bottom: 34px;
+  font-size: clamp(38px, 4vw, 52px);
+  line-height: 1.1;
+}
+
+.message {
+  margin-bottom: 42px;
+  color: #4b4c47;
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.homeButton {
+  min-width: 244px;
+  min-height: 72px;
+  padding: 0 34px;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #3a3a38;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.homeButton svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.homeButton:hover {
+  background: #8a5d3b;
+  transform: translateY(-2px);
+}
+
+.illustration {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  aspect-ratio: 1.14 / 1;
+  justify-self: center;
+  overflow: hidden;
+  border: 1px solid #777873;
+  background:
+    linear-gradient(41deg, transparent 49.75%, #8f908b 49.9%, #8f908b 50.1%, transparent 50.25%),
+    linear-gradient(-41deg, transparent 49.75%, #8f908b 49.9%, #8f908b 50.1%, transparent 50.25%),
+    #fafaf8;
+}
+
+.illustration span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (max-width: 900px) {
+  .notFound {
+    grid-template-columns: 1fr 1fr;
+    gap: 42px;
+    padding-inline: 0;
+  }
+
+  .homeButton {
+    min-width: 210px;
+    min-height: 62px;
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 700px) {
+  .notFound {
+    width: min(100% - 32px, 1200px);
+    min-height: auto;
+    padding: 56px 0 64px;
+    grid-template-columns: 1fr;
+    gap: 52px;
+  }
+
+  .code {
+    margin-bottom: 18px;
+    font-size: 92px;
+  }
+
+  .content h1 {
+    margin-bottom: 22px;
+    font-size: 38px;
+  }
+
+  .message {
+    margin-bottom: 32px;
+    font-size: 17px;
+    white-space: normal;
+  }
+
+  .illustration {
+    max-width: 480px;
+  }
+}

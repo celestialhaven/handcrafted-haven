@@ -1,0 +1,269 @@
+.profilePage {
+  width: min(100%, 1300px);
+  margin: 0 auto;
+  padding-bottom: 38px;
+}
+
+.cover {
+  width: 100%;
+  height: 190px;
+  border-bottom: 1px solid #999a95;
+  background:
+    linear-gradient(8deg, transparent 49.8%, #b0b0ac 49.9%, #b0b0ac 50.1%, transparent 50.2%),
+    linear-gradient(-8deg, transparent 49.8%, #b0b0ac 49.9%, #b0b0ac 50.1%, transparent 50.2%),
+    #f8f8f6;
+}
+
+.profileIntro {
+  width: min(100% - 64px, 1050px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 38px;
+}
+
+.avatar {
+  width: 190px;
+  height: 190px;
+  margin-top: -60px;
+  border: 1px solid #858681;
+  border-radius: 50%;
+  background: #f4f4f2;
+}
+
+.biography {
+  padding-top: 25px;
+}
+
+.nameRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 175px;
+  align-items: center;
+  gap: 30px;
+}
+
+.nameRow h1 {
+  font-size: 31px;
+}
+
+.location {
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #444540;
+  font-size: 17px;
+}
+
+.location svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
+.followButton {
+  min-height: 42px;
+  border: 0;
+  border-radius: 5px;
+  background: #3a3a38;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.followButton:hover,
+.followButton[aria-pressed="true"] {
+  background: #8a5d3b;
+}
+
+.bio {
+  max-width: 810px;
+  margin-top: 18px;
+  color: #3f403b;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.profileContent {
+  width: min(100% - 64px, 1050px);
+  margin: 35px auto 0;
+}
+
+.tabs {
+  min-height: 52px;
+  border-bottom: 1px solid #aaa9a4;
+  display: flex;
+  gap: clamp(30px, 6vw, 75px);
+}
+
+.tabs button {
+  position: relative;
+  padding: 0 12px 15px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.tabs .activeTab {
+  font-weight: 700;
+}
+
+.tabs .activeTab::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 3px;
+  background: #252622;
+}
+
+.productGrid {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+
+.productCard {
+  overflow: hidden;
+  border: 1px solid #999a95;
+  border-radius: 5px;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.productCard:hover {
+  border-color: #8a5d3b;
+  transform: translateY(-2px);
+}
+
+.productImage {
+  aspect-ratio: 1.4 / 1;
+  border-bottom: 1px solid #999a95;
+  background:
+    linear-gradient(36deg, transparent 49.7%, #aaa9a4 49.9%, #aaa9a4 50.1%, transparent 50.3%),
+    linear-gradient(-36deg, transparent 49.7%, #aaa9a4 49.9%, #aaa9a4 50.1%, transparent 50.3%),
+    #f8f8f6;
+}
+
+.productCard > div:last-child {
+  padding: 13px 17px 15px;
+}
+
+.productCard h2 {
+  font-size: 16px;
+}
+
+.productCard strong {
+  margin-top: 7px;
+  display: block;
+}
+
+.productCard p {
+  margin-top: 8px;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.productCard p span {
+  margin-left: 7px;
+  color: #555650;
+  letter-spacing: 0;
+}
+
+.viewAll {
+  width: min(100%, 255px);
+  min-height: 44px;
+  margin: 28px auto 0;
+  border: 1px solid #777873;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.viewAll:hover {
+  border-color: #8a5d3b;
+  color: #8a5d3b;
+}
+
+@media (max-width: 850px) {
+  .profileIntro,
+  .profileContent {
+    width: min(100% - 40px, 1050px);
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .cover {
+    height: 145px;
+  }
+
+  .profileIntro {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 150px;
+    margin-top: -55px;
+  }
+
+  .biography {
+    padding-top: 18px;
+  }
+
+  .nameRow {
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+  }
+
+  .nameRow h1 {
+    font-size: 27px;
+  }
+
+  .followButton {
+    min-width: 100px;
+    padding-inline: 18px;
+  }
+
+  .profileContent {
+    margin-top: 30px;
+  }
+
+  .tabs {
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .tabs button {
+    padding-inline: 10px;
+    white-space: nowrap;
+    font-size: 15px;
+  }
+
+  .productGrid {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 390px) {
+  .nameRow {
+    grid-template-columns: 1fr;
+  }
+
+  .followButton {
+    width: 100%;
+  }
+}

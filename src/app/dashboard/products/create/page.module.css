@@ -1,0 +1,263 @@
+.createPage {
+  width: min(100% - 48px, 1240px);
+  margin: 0 auto;
+  padding: 42px 0 54px;
+}
+
+.createPage > header {
+  margin-bottom: 30px;
+}
+
+.createPage h1 {
+  font-size: 37px;
+}
+
+.createPage header nav {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #6a6b65;
+  font-size: 18px;
+}
+
+.createPage form {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(350px, 0.9fr);
+  gap: 38px 64px;
+}
+
+.formFields {
+  display: grid;
+  gap: 27px;
+}
+
+.field {
+  display: grid;
+  gap: 10px;
+}
+
+.field label,
+.imageField h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.field > input,
+.field select,
+.field textarea,
+.priceInput {
+  width: 100%;
+  border: 1px solid #9d9e99;
+  border-radius: 6px;
+  background: #fff;
+  color: #282925;
+  font: inherit;
+  font-size: 17px;
+  outline: 0;
+}
+
+.field > input,
+.field select,
+.priceInput {
+  height: 59px;
+}
+
+.field > input,
+.field select {
+  padding: 0 17px;
+}
+
+.field textarea {
+  min-height: 165px;
+  padding: 17px;
+  resize: vertical;
+}
+
+.field > input:focus,
+.field select:focus,
+.field textarea:focus,
+.priceInput:focus-within {
+  border-color: #8a5d3b;
+  box-shadow: 0 0 0 3px rgba(138, 93, 59, 0.13);
+}
+
+.splitFields {
+  display: grid;
+  grid-template-columns: 1fr 0.87fr;
+  gap: 40px;
+}
+
+.priceInput {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+}
+
+.priceInput span {
+  font-size: 18px;
+}
+
+.priceInput input {
+  min-width: 0;
+  height: 100%;
+  flex: 1;
+  padding: 0 12px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.imageField {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+}
+
+.dropzone {
+  min-height: 500px;
+  padding: 36px;
+  border: 1.5px dashed #8e8f8a;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dropzone input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.dropzone svg {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dropzone strong {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: 20px;
+}
+
+.dropzone > span {
+  margin-top: 8px;
+  color: #686963;
+  font-size: 17px;
+}
+
+.dropzone small {
+  margin-top: auto;
+  color: #5a5b56;
+  font-size: 15px;
+}
+
+.actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+}
+
+.actions a,
+.actions button {
+  min-width: 185px;
+  min-height: 58px;
+  padding: 0 25px;
+  border: 1px solid #777873;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #22231f;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.actions .publish {
+  min-width: 235px;
+  border-color: #353633;
+  background: #353633;
+  color: #fff;
+}
+
+.actions .publish:hover {
+  border-color: #8a5d3b;
+  background: #8a5d3b;
+}
+
+.status {
+  grid-column: 1 / -1;
+  min-height: 22px;
+  color: #486441;
+  text-align: right;
+}
+
+@media (max-width: 850px) {
+  .createPage form {
+    grid-template-columns: 1fr;
+  }
+
+  .imageField {
+    grid-row: auto;
+  }
+
+  .dropzone {
+    min-height: 330px;
+  }
+}
+
+@media (max-width: 650px) {
+  .createPage {
+    width: min(100% - 32px, 1240px);
+    padding: 30px 0 42px;
+  }
+
+  .createPage h1 {
+    font-size: 31px;
+  }
+
+  .createPage header nav {
+    font-size: 15px;
+  }
+
+  .splitFields {
+    grid-template-columns: 1fr;
+    gap: 27px;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .actions a,
+  .actions button {
+    min-width: 0;
+    min-height: 52px;
+    padding-inline: 14px;
+    font-size: 15px;
+  }
+
+  .actions .publish {
+    min-width: 0;
+    grid-column: 1 / -1;
+  }
+}

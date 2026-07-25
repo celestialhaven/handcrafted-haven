@@ -1,0 +1,171 @@
+.contactPage {
+  width: min(100% - 48px, 1050px);
+  min-height: calc(100vh - 153px);
+  margin: 0 auto;
+  padding: 28px 0;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.85fr) minmax(420px, 1.15fr);
+  align-items: start;
+  gap: clamp(50px, 8vw, 100px);
+}
+
+.contactInfo {
+  padding: 8px 30px 8px 0;
+}
+
+.contactInfo header {
+  margin-left: 88px;
+  margin-bottom: 26px;
+}
+
+.contactInfo h1,
+.messagePanel > h2 {
+  font-size: 23px;
+}
+
+.contactInfo header p {
+  margin-top: 7px;
+  color: #4d4e49;
+}
+
+.detailList {
+  display: grid;
+  gap: 17px;
+}
+
+.detailList article {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: 24px;
+}
+
+.iconBox {
+  width: 54px;
+  height: 54px;
+  border: 1px solid #aaa9a4;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+}
+
+.iconBox svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.detailList h2 {
+  margin-bottom: 2px;
+  font-size: 15px;
+}
+
+.detailList p {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.messagePanel {
+  padding: 8px 0 8px 55px;
+  border-left: 1px solid #aaa9a4;
+}
+
+.messagePanel > h2 {
+  margin-bottom: 19px;
+}
+
+.messagePanel form {
+  display: grid;
+  gap: 11px;
+}
+
+.field {
+  display: grid;
+  gap: 5px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border: 1px solid #a5a6a1;
+  border-radius: 4px;
+  background: #fff;
+  color: #252622;
+  font: inherit;
+  font-size: 14px;
+  outline: 0;
+}
+
+.field input,
+.field select {
+  height: 39px;
+  padding: 0 12px;
+}
+
+.field textarea {
+  min-height: 94px;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #8a5d3b;
+  box-shadow: 0 0 0 3px rgba(138, 93, 59, 0.13);
+}
+
+.submitButton {
+  min-height: 43px;
+  margin-top: 2px;
+  border: 0;
+  border-radius: 4px;
+  background: #3a3a38;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background: #8a5d3b;
+}
+
+@media (max-width: 850px) {
+  .contactPage {
+    width: min(100% - 32px, 1050px);
+    min-height: auto;
+    padding: 32px 0 48px;
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .contactInfo {
+    padding: 0;
+  }
+
+  .contactInfo header {
+    margin-left: 0;
+  }
+
+  .messagePanel {
+    padding: 36px 0 0;
+    border-top: 1px solid #aaa9a4;
+    border-left: 0;
+  }
+
+  .detailList article {
+    grid-template-columns: 54px 1fr;
+    gap: 18px;
+  }
+}
