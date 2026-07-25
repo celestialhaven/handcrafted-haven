@@ -33,6 +33,15 @@ body {
   flex-direction: column;
 }
 
+body:has([data-dashboard-layout]) > header,
+body:has([data-dashboard-layout]) > footer {
+  display: none;
+}
+
+body:has([data-dashboard-layout]) > .site-content {
+  display: block;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

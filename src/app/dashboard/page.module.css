@@ -1,0 +1,209 @@
+.dashboard {
+  width: 100%;
+  padding: 34px 32px 34px;
+}
+
+.pageHeading {
+  margin-bottom: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pageHeading h1 {
+  font-size: 30px;
+}
+
+.pageHeading button {
+  width: 38px;
+  height: 38px;
+  border: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pageHeading svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  gap: 24px;
+}
+
+.metrics article {
+  min-height: 144px;
+  padding: 28px 29px;
+  border: 1px solid #8f908b;
+  border-radius: 6px;
+}
+
+.metrics p {
+  margin-bottom: 23px;
+  font-size: 16px;
+}
+
+.metrics strong {
+  font-size: clamp(28px, 2.5vw, 37px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.recentProducts {
+  margin-top: 44px;
+}
+
+.sectionHeading {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.sectionHeading h2 {
+  font-size: 25px;
+}
+
+.sectionHeading a {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 17px;
+}
+
+.sectionHeading a span {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid #cdcdc8;
+  border-radius: 5px;
+}
+
+.tableWrap table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.tableWrap th,
+.tableWrap td {
+  padding: 0 20px;
+  border-bottom: 1px solid #cdcdc8;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tableWrap th {
+  height: 56px;
+  background: #f7f7f5;
+  font-weight: 700;
+}
+
+.tableWrap td {
+  height: 108px;
+}
+
+.tableWrap tr:last-child td {
+  border-bottom: 0;
+}
+
+.tableWrap th:first-child,
+.tableWrap td:first-child {
+  width: 130px;
+  padding-left: 17px;
+}
+
+.productImage {
+  width: 75px;
+  height: 75px;
+  border: 1px solid #8e8f8a;
+  background:
+    linear-gradient(45deg, transparent 49.3%, #969792 49.7%, #969792 50.3%, transparent 50.7%),
+    linear-gradient(-45deg, transparent 49.3%, #969792 49.7%, #969792 50.3%, transparent 50.7%);
+}
+
+.statusDot {
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #7b7c78;
+}
+
+.tableWrap td button {
+  min-width: 115px;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid #aaa9a4;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 1250px) {
+  .metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .dashboard {
+    padding: 24px 16px 30px;
+  }
+
+  .pageHeading {
+    margin-bottom: 24px;
+  }
+
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .metrics article {
+    min-height: 120px;
+    padding: 20px;
+  }
+
+  .metrics p {
+    margin-bottom: 18px;
+    font-size: 14px;
+  }
+
+  .metrics strong {
+    font-size: 27px;
+  }
+
+  .recentProducts {
+    margin-top: 32px;
+  }
+
+  .sectionHeading h2 {
+    font-size: 21px;
+  }
+
+  .sectionHeading a {
+    gap: 7px;
+    font-size: 14px;
+  }
+}
