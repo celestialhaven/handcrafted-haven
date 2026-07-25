@@ -1,7 +1,3 @@
-import Link from "next/link";
-import { primaryRoutes } from "@/app/lib/routes";
-import RouteLinks from "@/app/ui/shared/route-links";
-
 type RoutePlaceholderProps = {
   title: string;
   description?: string;
@@ -9,21 +5,12 @@ type RoutePlaceholderProps = {
 
 export default function RoutePlaceholder({
   title,
-  description = "This route is ready for manual design.",
+  description,
 }: RoutePlaceholderProps) {
   return (
-    <main>
-      <nav aria-label="Primary navigation">
-        {primaryRoutes.map((route) => (
-          <Link key={route.href} href={route.href}>
-            {route.label}
-          </Link>
-        ))}
-      </nav>
+    <main style={{ width: "min(100% - 48px, 1200px)", margin: "0 auto", padding: "48px 0" }}>
       <h1>{title}</h1>
-      <p>{description}</p>
-      <Link href="/">View all prepared routes</Link>
-      <RouteLinks />
+      {description ? <p>{description}</p> : null}
     </main>
   );
 }
