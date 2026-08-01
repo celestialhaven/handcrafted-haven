@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { requireArtisanSession } from "@/lib/auth";
+import LogoutButton from "@/app/ui/shared/logout-button";
 import styles from "./dashboard-layout.module.css";
 
 const dashboardLinks = [
@@ -31,7 +33,8 @@ function CartIcon() {
   );
 }
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default async function DashboardLayout({ children }: { children: ReactNode }) {
+  const session = await requireArtisanSession();
   return (
     <div className={styles.dashboardShell} data-dashboard-layout>
       <header className={styles.dashboardHeader}>
@@ -49,6 +52,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <span />
         </button>
         <div className={styles.headerActions}>
+          <span aria-label={`Signed in as ${session.name}`}>{session.name}</span>
           <Link href="/dashboard/profile" aria-label="Seller profile">
             <AccountIcon />
           </Link>
@@ -70,10 +74,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <strong>{link.label}</strong>
             </Link>
           ))}
-          <Link className={styles.logout} href="/sign-in">
+          <LogoutButton className={styles.logout} redirectTo="/artisan/sign-in">
             <span aria-hidden="true">↪</span>
             <strong>Logout</strong>
-          </Link>
+          </LogoutButton>
         </nav>
       </aside>
 

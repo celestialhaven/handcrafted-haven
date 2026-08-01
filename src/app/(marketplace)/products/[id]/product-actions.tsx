@@ -21,8 +21,34 @@ function HeartIcon() {
   );
 }
 
-export default function ProductActions() {
+export default function ProductActions({ productId, disabled = false, maxQuantity = 0 }: { productId: string; disabled?: boolean; maxQuantity?: number }) {
   const [quantity, setQuantity] = useState(1);
+  const [status, setStatus] = useState("");
+  const [adding, setAdding] = useState(false);
+
+  async function addToCart() {
+    setAdding(true);
+    setStatus("");
+    try {
+      const response = await fetch("/api/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productId, quantity }),
+      });
+      const result = await response.json();
+      if (response.status === 401) {
+        window.location.href = `/sign-in?next=${encodeURIComponent(window.location.pathname)}`;
+        return;
+      }
+      if (!response.ok) throw new Error(result.error || "Unable to add this product.");
+      setStatus(`${quantity} ${quantity === 1 ? "item" : "items"} added to your cart.`);
+      window.dispatchEvent(new CustomEvent("cart-updated", { detail: result.cart.itemCount }));
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Unable to add this product.");
+    } finally {
+      setAdding(false);
+    }
+  }
 
   return (
     <div className={styles.actions}>
@@ -43,6 +69,7 @@ export default function ProductActions() {
           <button
             type="button"
             aria-label="Increase quantity"
+            disabled={maxQuantity > 0 && quantity >= maxQuantity}
             onClick={() => setQuantity((current) => current + 1)}
           >
             +
@@ -50,10 +77,11 @@ export default function ProductActions() {
         </div>
       </div>
 
-      <button className={styles.addToCart} type="button">
+      <button className={styles.addToCart} type="button" disabled={disabled || adding} onClick={addToCart}>
         <CartIcon />
-        Add to Cart
+        {disabled ? "Out of Stock" : adding ? "Adding…" : "Add to Cart"}
       </button>
+      {status && <p role="status" aria-live="polite">{status}</p>}
       <button className={styles.wishlist} type="button">
         <HeartIcon />
         Add to Wishlist

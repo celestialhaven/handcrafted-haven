@@ -201,6 +201,44 @@
   border: 0;
 }
 
+.catalogSkeleton > span,
+.catalogSkeleton div > span,
+.skeletonCard .productImage,
+.skeletonCard .productInfo > span {
+  display: block;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ecebe7 25%, #f8f7f4 50%, #ecebe7 75%);
+  background-size: 220% 100%;
+  animation: catalogShimmer 1.35s ease-in-out infinite;
+}
+
+.catalogSkeleton > span {
+  width: 78%;
+  height: 14px;
+  margin-bottom: 22px;
+}
+
+.catalogSkeleton div > span:first-child { width: 190px; height: 24px; }
+.catalogSkeleton div > span:last-child { width: 130px; height: 12px; margin-top: 10px; }
+.skeletonCard { pointer-events: none; }
+.skeletonCard .productImage { border-radius: 0; background-color: #ecebe7; }
+.skeletonCard .productInfo { gap: 10px; }
+.skeletonCard .productInfo > span { width: 75%; height: 12px; }
+.skeletonCard .productInfo > span:nth-child(2) { width: 42%; }
+.skeletonCard .productInfo > span:nth-child(3) { width: 58%; }
+
+@keyframes catalogShimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalogSkeleton > span,
+  .catalogSkeleton div > span,
+  .skeletonCard .productImage,
+  .skeletonCard .productInfo > span { animation: none; }
+}
+
 @media (max-width: 1050px) {
   .catalog {
     grid-template-columns: 240px minmax(0, 1fr);

@@ -18,10 +18,34 @@ export default function CreateProductPage() {
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const submitter = (event.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null;
-    setStatus(submitter?.value === "draft" ? "Product saved as a draft." : "Product is ready to publish.");
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setStatus("Saving product...");
+
+    try {
+      const response = await fetch("/api/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          category: data.get("category"),
+          price: data.get("price"),
+          availability: data.get("availability"),
+          description: data.get("description"),
+          status: submitter?.value === "publish" ? "published" : "draft",
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Unable to save the product.");
+      setStatus(submitter?.value === "draft" ? "Product saved as a draft." : "Product published successfully.");
+      form.reset();
+      setFileName("");
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Unable to save the product.");
+    }
   }
 
   return (
@@ -54,12 +78,12 @@ export default function CreateProductPage() {
             <label htmlFor="product-category">Category</label>
             <select id="product-category" name="category" defaultValue="" required>
               <option value="" disabled>Select category</option>
-              <option value="home-decor">Home Decor</option>
-              <option value="jewelry">Jewelry</option>
-              <option value="accessories">Accessories</option>
-              <option value="textiles">Textiles</option>
-              <option value="pottery">Pottery</option>
-              <option value="woodwork">Woodwork</option>
+              <option value="Home Decor">Home Decor</option>
+              <option value="Jewelry">Jewelry</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Textiles">Textiles</option>
+              <option value="Pottery">Pottery</option>
+              <option value="Woodwork">Woodwork</option>
             </select>
           </div>
 

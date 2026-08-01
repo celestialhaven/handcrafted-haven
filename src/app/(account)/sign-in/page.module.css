@@ -58,6 +58,30 @@
   gap: 26px;
 }
 
+.accountSwitch {
+  margin: -12px 0 28px;
+  padding: 4px;
+  border-radius: 7px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  background: #efefec;
+}
+
+.accountSwitch a {
+  padding: 11px 16px;
+  border-radius: 5px;
+  color: #595a55;
+  font-weight: 700;
+  text-align: center;
+}
+
+.accountSwitch .selectedAccount {
+  background: #fff;
+  color: #242520;
+  box-shadow: 0 1px 4px rgba(35, 34, 30, 0.12);
+}
+
 .field {
   display: grid;
   gap: 10px;
@@ -159,6 +183,17 @@
 
 .submitButton:hover {
   background: #8a5d3b;
+}
+
+.submitButton:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.error {
+  margin-top: -12px;
+  color: #a12525;
+  text-align: center;
 }
 
 .divider {

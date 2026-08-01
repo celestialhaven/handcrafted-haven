@@ -158,6 +158,11 @@
   font-size: 13px;
 }
 
+.categoryCard small {
+  color: #73746e;
+  font-size: 11px;
+}
+
 .productGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -226,6 +231,11 @@
   font-size: 13px;
 }
 
+.artisanInfo small {
+  margin-top: 5px;
+  color: #6d604e;
+}
+
 .artisanInfo a {
   margin-top: 10px;
   padding: 6px 10px;
@@ -291,6 +301,62 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.skeletonHeading {
+  height: 31px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.skeletonCard {
+  pointer-events: none;
+}
+
+.skeletonBar,
+.skeletonBlock,
+.skeletonCard .skeletonCircle {
+  display: block;
+  overflow: hidden;
+  border: 0;
+  background: linear-gradient(90deg, #ecebe7 25%, #f7f6f3 50%, #ecebe7 75%);
+  background-size: 220% 100%;
+  animation: homeShimmer 1.35s ease-in-out infinite;
+}
+
+.skeletonBar {
+  height: 12px;
+  border-radius: 999px;
+}
+
+.skeletonBlock {
+  background-color: #ecebe7;
+}
+
+.skeletonCard .skeletonCircle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 0;
+}
+
+.skeletonCard.productCard .productInfo,
+.skeletonCard .artisanInfo {
+  gap: 8px;
+}
+
+@keyframes homeShimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeletonBar,
+  .skeletonBlock,
+  .skeletonCard .skeletonCircle {
+    animation: none;
+  }
 }
 
 .primaryButton:hover,

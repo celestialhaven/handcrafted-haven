@@ -377,3 +377,19 @@
     height: 90px;
   }
 }
+.manageProduct {
+  min-height: 54px;
+  margin-top: 24px;
+  padding: 0 26px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #393a36;
+  color: #fff;
+  font-weight: 700;
+}
+
+.manageProduct:hover {
+  background: #8a5d3b;
+}

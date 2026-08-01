@@ -87,7 +87,8 @@
   gap: 8px;
 }
 
-.sidebar a {
+.sidebar a,
+.sidebar button {
   min-height: 57px;
   padding: 0 15px;
   border-radius: 6px;
@@ -97,12 +98,24 @@
   font-size: 17px;
 }
 
+.sidebar button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
 .sidebar a:hover,
+.sidebar button:hover,
 .sidebar .active {
   background: #f0f0ee;
 }
 
-.sidebar a > span {
+.sidebar a > span,
+.sidebar button > span {
   width: 32px;
   flex: 0 0 auto;
   font-family: Georgia, serif;
@@ -145,12 +158,14 @@
     padding: 20px 12px;
   }
 
-  .sidebar a {
+  .sidebar a,
+  .sidebar button {
     padding: 0;
     justify-content: center;
   }
 
-  .sidebar a strong {
+  .sidebar a strong,
+  .sidebar button strong {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -191,12 +206,14 @@
     display: flex;
   }
 
-  .sidebar a {
+  .sidebar a,
+  .sidebar button {
     width: 52px;
     min-height: 48px;
   }
 
-  .sidebar a > span {
+  .sidebar a > span,
+  .sidebar button > span {
     font-size: 27px;
   }
 
