@@ -1,5 +1,4 @@
-import RoutePlaceholder from "@/app/ui/shared/route-placeholder";
-
-export default function SettingsPage() {
-  return <RoutePlaceholder title="Settings" />;
-}
+import { Suspense } from "react";import { connectToDatabase } from "@/lib/mongodb";import { requireArtisanSession } from "@/lib/auth";import { User } from "@/models";import SettingsForm from "./settings-form";import styles from "../dashboard-pages.module.css";
+type UserSettings={email:string;preferences?:{orderEmails?:boolean;reviewEmails?:boolean;marketingEmails?:boolean}};
+async function SettingsData(){const session=await requireArtisanSession();await connectToDatabase();const user=await User.findById(session.userId).select("email preferences").lean<UserSettings>();const prefs=user?.preferences;return <SettingsForm settings={{email:user?.email||session.email,orderEmails:prefs?.orderEmails??true,reviewEmails:prefs?.reviewEmails??true,marketingEmails:prefs?.marketingEmails??false}}/>}
+export default function SettingsPage(){return <main className={styles.page}><header className={styles.heading}><div><h1>Settings</h1><p>Manage your account email and notification preferences.</p></div></header><Suspense fallback={<div className={styles.skeleton}/>}><SettingsData/></Suspense></main>}

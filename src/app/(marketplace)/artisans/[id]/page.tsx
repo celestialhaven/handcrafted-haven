@@ -1,104 +1,46 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { connectToDatabase } from "@/lib/mongodb";
+import { Artisan, Product } from "@/models";
 import FollowButton from "./follow-button";
 import styles from "./page.module.css";
 
-type ArtisanPageProps = {
-  params: Promise<{ id: string }>;
-};
-
-const artisanProfiles: Record<string, { name: string; location: string }> = {
-  "maya-chen": { name: "Maya Chen", location: "Portland, OR" },
-  "elias-brooks": { name: "Elias Brooks", location: "Austin, TX" },
-  "sofia-reyes": { name: "Sofia Reyes", location: "Santa Fe, NM" },
-  "noah-williams": { name: "Noah Williams", location: "Asheville, NC" },
-  "amara-patel": { name: "Amara Patel", location: "Seattle, WA" },
-  "artisan-name": { name: "Artisan Name", location: "Portland, OR" },
-};
-
-const products = [
-  { id: "ceramic-mug", name: "Ceramic Mug", price: "$32.00" },
-  { id: "woven-basket", name: "Woven Basket", price: "$58.00" },
-  { id: "linen-tote", name: "Linen Tote", price: "$42.00" },
-  { id: "clay-vase", name: "Clay Vase", price: "$88.00" },
-];
+type ArtisanPageProps = { params: Promise<{ id: string }> };
+type ArtisanView = { _id: unknown; displayName: string; location: string; bio: string };
+type ProductView = { _id: { toString(): string }; slug: string; name: string; price: number; ratingAverage: number; ratingCount: number };
 
 function LocationIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 22s7-6.1 7-13a7 7 0 1 0-14 0c0 6.9 7 13 7 13Z" />
-      <circle cx="12" cy="9" r="2.4" />
-    </svg>
-  );
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.1 7-13a7 7 0 1 0-14 0c0 6.9 7 13 7 13Z" /><circle cx="12" cy="9" r="2.4" /></svg>;
 }
 
-function formatName(id: string) {
-  return id
-    .split("-")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
+async function ArtisanProfile({ slug }: { slug: string }) {
+  await connectToDatabase();
+  const artisan = await Artisan.findOne({ slug }).select("displayName location bio").lean<ArtisanView>();
+  if (!artisan) notFound();
+  const products = await Product.find({ artisan: artisan._id, status: "published" })
+    .select("slug name price ratingAverage ratingCount")
+    .sort({ createdAt: -1 }).lean<ProductView[]>();
+
+  return <>
+    <div className={styles.cover} role="img" aria-label={`${artisan.displayName} studio cover image`} />
+    <section className={styles.profileIntro}>
+      <div className={styles.avatar} role="img" aria-label={`${artisan.displayName} profile image`} />
+      <div className={styles.biography}><div className={styles.nameRow}><div><h1>{artisan.displayName}</h1><p className={styles.location}><LocationIcon />{artisan.location || "Location not provided"}</p></div><FollowButton /></div><p className={styles.bio}>{artisan.bio || "This artisan has not added a biography yet."}</p></div>
+    </section>
+    <section className={styles.profileContent}>
+      <div className={styles.tabs} role="tablist" aria-label="Artisan profile sections"><button className={styles.activeTab} type="button" role="tab" aria-selected="true">Products</button><button type="button" role="tab" aria-selected="false">About</button><button type="button" role="tab" aria-selected="false">Stories</button><button type="button" role="tab" aria-selected="false">Reviews</button><button type="button" role="tab" aria-selected="false">Policies</button></div>
+      {products.length ? <div className={styles.productGrid}>{products.map((product) => <Link className={styles.productCard} href={`/products/${product.slug}`} key={product._id.toString()}><div className={styles.productImage} role="img" aria-label={`${product.name} image`} /><div><h2>{product.name}</h2><strong>${product.price.toFixed(2)}</strong><p aria-label={`${product.ratingAverage} out of 5 stars`}>★ {product.ratingAverage.toFixed(1)} <span>({product.ratingCount})</span></p></div></Link>)}</div> : <p>No published products yet.</p>}
+      <Link className={styles.viewAll} href={`/products?artisan=${slug}`}>View All Products</Link>
+    </section>
+  </>;
+}
+
+function ProfileSkeleton() {
+  return <div aria-label="Loading artisan profile" aria-busy="true"><div className={styles.cover} /><section className={styles.profileIntro}><div className={styles.avatar} /><div className={styles.biography}><h1>Loading artisan…</h1><p>Fetching profile and products.</p></div></section></div>;
 }
 
 export default async function ArtisanPage({ params }: ArtisanPageProps) {
   const { id } = await params;
-  const artisan = artisanProfiles[id] ?? {
-    name: formatName(id),
-    location: "Portland, OR",
-  };
-
-  return (
-    <main className={styles.profilePage}>
-      <div className={styles.cover} role="img" aria-label={`${artisan.name} studio cover image`} />
-
-      <section className={styles.profileIntro}>
-        <div className={styles.avatar} role="img" aria-label={`${artisan.name} profile image`} />
-        <div className={styles.biography}>
-          <div className={styles.nameRow}>
-            <div>
-              <h1>{artisan.name}</h1>
-              <p className={styles.location}>
-                <LocationIcon />
-                {artisan.location}
-              </p>
-            </div>
-            <FollowButton />
-          </div>
-          <p className={styles.bio}>
-            Passionate artisan creating meaningful, ethically made handcrafted
-            pieces inspired by tradition and nature. Each creation is carefully
-            crafted with love and attention to detail, bringing beauty and
-            authenticity into everyday life.
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.profileContent}>
-        <div className={styles.tabs} role="tablist" aria-label="Artisan profile sections">
-          <button className={styles.activeTab} type="button" role="tab" aria-selected="true">
-            Products
-          </button>
-          <button type="button" role="tab" aria-selected="false">About</button>
-          <button type="button" role="tab" aria-selected="false">Stories</button>
-          <button type="button" role="tab" aria-selected="false">Reviews</button>
-          <button type="button" role="tab" aria-selected="false">Policies</button>
-        </div>
-
-        <div className={styles.productGrid}>
-          {products.map((product) => (
-            <Link className={styles.productCard} href={`/products/${product.id}`} key={product.id}>
-              <div className={styles.productImage} role="img" aria-label={`${product.name} image`} />
-              <div>
-                <h2>{product.name}</h2>
-                <strong>{product.price}</strong>
-                <p aria-label="4 out of 5 stars">★★★★☆ <span>(0)</span></p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <Link className={styles.viewAll} href="/products">
-          View All Products
-        </Link>
-      </section>
-    </main>
-  );
+  return <main className={styles.profilePage}><Suspense key={id} fallback={<ProfileSkeleton />}><ArtisanProfile slug={id} /></Suspense></main>;
 }

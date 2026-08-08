@@ -1,5 +1,3 @@
-import RoutePlaceholder from "@/app/ui/shared/route-placeholder";
-
-export default function ProfilePage() {
-  return <RoutePlaceholder title="Seller Profile" />;
-}
+import { Suspense } from "react";import { notFound } from "next/navigation";import { connectToDatabase } from "@/lib/mongodb";import { requireArtisanSession } from "@/lib/auth";import { Artisan } from "@/models";import ProfileForm from "./profile-form";import styles from "../dashboard-pages.module.css";
+async function ProfileData(){const session=await requireArtisanSession();await connectToDatabase();const profile=await Artisan.findOne({user:session.userId}).select("displayName location bio specialties").lean<{displayName:string;location:string;bio:string;specialties:string[]}>();if(!profile)notFound();return <ProfileForm profile={{displayName:profile.displayName,location:profile.location||"",bio:profile.bio||"",specialties:profile.specialties||[]}}/>}
+export default function ProfilePage(){return <main className={styles.page}><header className={styles.heading}><div><h1>Seller Profile</h1><p>Keep your public artisan story and shop details current.</p></div></header><Suspense fallback={<div className={styles.skeleton}/>}><ProfileData/></Suspense></main>}

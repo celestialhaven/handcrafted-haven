@@ -7,6 +7,11 @@ const userSchema = new Schema(
     passwordHash: { type: String, required: true, select: false },
     role: { type: String, enum: ["buyer", "artisan", "admin"], default: "buyer" },
     avatarUrl: { type: String, default: "" },
+    preferences: {
+      orderEmails: { type: Boolean, default: true },
+      reviewEmails: { type: Boolean, default: true },
+      marketingEmails: { type: Boolean, default: false },
+    },
   },
   { timestamps: true },
 );

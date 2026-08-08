@@ -1,5 +1,8 @@
-import RoutePlaceholder from "@/app/ui/shared/route-placeholder";
-
-export default function ReviewsPage() {
-  return <RoutePlaceholder title="Reviews" />;
-}
+import { Suspense } from "react";
+import { connectToDatabase } from "@/lib/mongodb";
+import { requireArtisanSession } from "@/lib/auth";
+import { Artisan, Product, Review } from "@/models";
+import styles from "../dashboard-pages.module.css";
+type ReviewView={_id:{toString():string};rating:number;title?:string;comment:string;verifiedPurchase:boolean;createdAt:Date;user:{name?:string};product:{name?:string}};
+async function ReviewsData(){const session=await requireArtisanSession();await connectToDatabase();const artisan=await Artisan.findOne({user:session.userId}).select("_id").lean();if(!artisan)return <p className={styles.empty}>No artisan profile found.</p>;const productIds=await Product.find({artisan:artisan._id}).distinct("_id");const reviews=await Review.find({product:{$in:productIds}}).populate("user","name").populate("product","name").sort({createdAt:-1}).lean<ReviewView[]>();const average=reviews.length?reviews.reduce((s,r)=>s+r.rating,0)/reviews.length:0;return <><section className={styles.cards}><article><span>Total Reviews</span><strong>{reviews.length}</strong></article><article><span>Average Rating</span><strong>{average.toFixed(1)} ★</strong></article><article><span>Five-star Reviews</span><strong>{reviews.filter(r=>r.rating===5).length}</strong></article><article><span>Verified Purchases</span><strong>{reviews.filter(r=>r.verifiedPurchase).length}</strong></article></section>{reviews.map(r=><article className={styles.review} key={r._id.toString()}><header><div><h2>{r.title||`Review for ${r.product?.name||"product"}`}</h2><small>{r.user?.name||"Customer"} · {new Date(r.createdAt).toLocaleDateString()} {r.verifiedPurchase?"· Verified purchase":""}</small></div><strong className={styles.stars}>{"★".repeat(r.rating)}{"☆".repeat(5-r.rating)}</strong></header><p>{r.comment}</p></article>)}{!reviews.length&&<p className={styles.empty}>Your products have no reviews yet.</p>}</>}
+export default function ReviewsPage(){return <main className={styles.page}><header className={styles.heading}><div><h1>Reviews</h1><p>See what customers are saying about your work.</p></div></header><Suspense fallback={<div className={styles.skeleton}/>}><ReviewsData/></Suspense></main>}

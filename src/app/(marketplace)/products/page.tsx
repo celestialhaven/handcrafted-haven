@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { connectToDatabase } from "@/lib/mongodb";
-import { Product } from "@/models";
+import { Artisan, Product } from "@/models";
 import ProductsCatalog, { type CatalogProduct } from "./products-catalog";
 import styles from "./page.module.css";
 
 type ProductsPageProps = {
-  searchParams: Promise<{ category?: string; query?: string }>;
+  searchParams: Promise<{ category?: string; query?: string; artisan?: string }>;
 };
 
 type ProductRecord = {
@@ -24,16 +24,18 @@ function escapeRegex(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-async function ProductsData({ selectedCategory, query }: { selectedCategory?: string; query?: string }) {
+async function ProductsData({ selectedCategory, query, artisanSlug }: { selectedCategory?: string; query?: string; artisanSlug?: string }) {
   await connectToDatabase();
   const normalizedQuery = query?.trim() ?? "";
-  const productFilter = normalizedQuery
+  const artisan = artisanSlug ? await Artisan.findOne({ slug: artisanSlug }).select("_id").lean() : null;
+  const productFilter: Record<string, unknown> = normalizedQuery
     ? { status: "published", $or: [
         { name: { $regex: escapeRegex(normalizedQuery), $options: "i" } },
         { category: { $regex: escapeRegex(normalizedQuery), $options: "i" } },
         { description: { $regex: escapeRegex(normalizedQuery), $options: "i" } },
-      ] }
+    ] }
     : { status: "published" };
+  if (artisanSlug) productFilter.artisan = artisan?._id ?? null;
   const [records, categoryNames] = await Promise.all([
     Product.find(productFilter).select("slug name category price ratingAverage ratingCount images createdAt").sort({ createdAt: -1 }).lean<ProductRecord[]>(),
     Product.distinct<string>("category", { status: "published" }),
@@ -70,6 +72,6 @@ function CatalogSkeleton() {
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const { category, query } = await searchParams;
-  return <Suspense key={`${category ?? ""}:${query ?? ""}`} fallback={<CatalogSkeleton />}><ProductsData selectedCategory={category} query={query} /></Suspense>;
+  const { category, query, artisan } = await searchParams;
+  return <Suspense key={`${category ?? ""}:${query ?? ""}:${artisan ?? ""}`} fallback={<CatalogSkeleton />}><ProductsData selectedCategory={category} query={query} artisanSlug={artisan} /></Suspense>;
 }
